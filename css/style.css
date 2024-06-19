@@ -1,0 +1,154 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* Page wrapper */
+.page-wrapper {
+    width: 100%;
+    height: 100vh;
+    background-color: #1a2233;
+    background-image: linear-gradient(45deg , #1a2233 , #293142);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: auto;
+}
+
+
+.page-wrapper > div {
+    width: 100%;
+    overflow: auto;
+}
+
+h1 {
+    color: #ffffff;
+    font-size: 60px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.carousel {
+    margin: 0 auto;
+    width: 90%;
+    max-width: 1080px;
+    aspect-ratio: 18 / 10;
+    display: flex;
+    gap: 2%;
+    justify-content: space-between;
+}
+
+
+/* Big changing image container */
+#changing-image {
+    position: relative;
+    flex-basis: calc((98% / 6) * 5);
+}
+
+/* Buttons to go to previous/next image */
+#changing-image > button {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 5vw;
+    max-width: 50px;
+    aspect-ratio: 1 / 1;
+    padding: 0;
+    border-radius: 50%;
+    font-size: 30px;
+    line-height: 1;
+    background-color: #ffffff;
+    opacity: 25%;
+    appearance: none;
+    border: none;
+    cursor: pointer;
+}
+
+#changing-image > button:hover {
+    opacity: 50%;
+}
+
+#changing-image > button:active {
+    opacity: 75%;
+}
+
+#previous {
+    top: 10%;
+}
+
+#next {
+    bottom: 10%;
+}
+
+/* Big images */
+#changing-image > img {
+    display: none;
+}
+
+#changing-image > img.active {
+    display: block;
+}
+
+
+/* Images previews */
+#thumbnails-container {
+    flex-basis: calc((98% / 6) * 1);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Single image preview container */
+.thumbnail {
+    flex-basis: 20%;
+}
+
+.thumbnail.active {
+    padding: 2px;
+    animation: thumbnail-glow 2s alternate infinite ease-in-out;
+}
+
+/* Rule for every image container and every image */
+.img-container {
+    overflow: hidden;
+    aspect-ratio: 3 / 2;
+}
+
+.img-container > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+
+/* Animation for active preview */
+@keyframes thumbnail-glow {
+    0% {background-color: #ffffff;}
+    100% {background-color: #ffffff80;}
+}
+
+
+
+@media all and (max-width: 1200px) {
+    h1 {
+        font-size: 30px;
+        margin-bottom: 15px;
+    }
+
+    .carousel {
+        max-width: 900px;
+        aspect-ratio: 5 / 4;
+        flex-direction: column;
+    }
+
+    #changing-image > button {
+        font-size: 3.5vw;
+    }
+    
+    #thumbnails-container {
+        flex-direction: row;
+    }
+}

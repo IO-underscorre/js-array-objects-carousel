@@ -1,0 +1,66 @@
+:root {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 16px;
+
+    --background-primary-color: #e4e71c;
+    --background-secondary-color: #babd09;
+    --window-color: #141414;
+    --header-text-color: #c018a4;
+    --text-color: #ffffff;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(45deg, var(--background-primary-color), var(--background-secondary-color));
+}
+
+#wrapper {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-y: auto;
+}
+
+#wrapper > div {
+    width: 90%;
+    max-width: 30rem;
+    height: fit-content;
+    padding: 2rem;
+    border-radius: 2rem;
+    background-color: var(--window-color);
+    box-shadow: .25rem .25rem .125rem #00000080;
+    color: var(--text-color);
+    text-align: center;
+}
+
+h1 {
+    color: var(--header-text-color);
+    margin-bottom: 6rem;
+}
+
+h1 + span {
+    display: block;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+span > b {
+    font-style: italic;
+}
+
+#password-container {
+    display: block;
+    font-size: 1.75rem;
+    overflow-wrap: break-word;
+}
+
+#password-container:hover {
+    text-decoration: underline;
+}
