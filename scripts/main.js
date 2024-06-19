@@ -1,4 +1,27 @@
-const imagePaths = ['images/01.webp' , 'images/02.webp', 'images/03.webp', 'images/04.webp', 'images/05.webp'];
+const games = [
+    {
+        image: 'images/01.webp',
+        title: 'Marvel\'s Spiderman Miles Morale',
+        text: 'Experience the rise of Miles Morales as the new hero masters incredible, explosive new powers to become his own Spider-Man.',
+    } , {
+        image: 'images/02.webp',
+        title: 'Ratchet & Clank: Rift Apart',
+        text: 'Go dimension-hopping with Ratchet and Clank as they take on an evil emperor from another reality.',
+    } , {
+        image: 'images/03.webp',
+        title: 'Fortnite',
+        text: "Grab all of your friends and drop into Epic Games Fortnite, a massive 100 - player face - off that combines looting, crafting, shootouts and chaos.",
+    } , {
+        image: 'images/04.webp',
+        title: 'Stray',
+        text: 'Lost, injured and alone, a stray cat must untangle an ancient mystery to escape a long-forgotten city',
+    } , {
+        image: 'images/05.webp',
+        title: "Marvel's Avengers",
+        text: 'Marvel\'s Avengers is an epic, third-person, action-adventure game that combines an original, cinematic story with single-player and co-operative gameplay.',
+    } 
+];
+
 const primaryImageContainer = document.getElementById('changing-image') , thumbnailContainers = document.getElementsByClassName('thumbnail');
 
 // Insert images in the page
@@ -6,7 +29,7 @@ for (let i = 0 ; i < imagePaths.length ; i++) {
     const imageContainers = [primaryImageContainer , thumbnailContainers[i]];
 
     for (let j = 0 ; j < 2 ; j++) {
-        const image = document.createElement('img');
+        const image = document.createElement('images');
         image.src = imagePaths[i];
         imageContainers[j].append(image);
         
@@ -15,7 +38,7 @@ for (let i = 0 ; i < imagePaths.length ; i++) {
     }
 }
 
-const primaryImages = document.querySelectorAll('#changing-image > img');
+const primaryImages = document.querySelectorAll('#changing-image > images');
 
 // Function to check images with active class, remove the class and set as active the one behind or after
 function activeTheAdjacent(largeImages , smallImageContainers , isOrderFromFirstToLast = true) {
