@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Steam</title>
     
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -18,10 +20,13 @@
             <div class="carousel">
                 <!-- Big changing image container -->
                 <div id="changing-image" class="img-container">
-                    <!-- Buttons to go to previous/next image -->
-                    <button id="previous">&#11165;</button>
-                    <button id="next">&#11167;</button>
-
+                    <!-- Buttons to go to previous/next image and stop/play autoscroll-->
+                    <div class="buttons-container">
+                        <button id="previous" class="carousel-btn"><i class="fa-solid fa-angles-up"></i></button>
+                        <button id="start" class="carousel-btn"><i class="fa-solid fa-play"></i></button>
+                        <button id="stop" class="carousel-btn"><i class="fa-solid fa-stop"></i></button>
+                        <button id="next" class="carousel-btn"><i class="fa-solid fa-angles-down"></i></button>
+                    </div>
                     <!-- Game large image -->
 
                     <!-- Game title and description -->
