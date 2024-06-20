@@ -55,6 +55,9 @@ btns[1].addEventListener('click' , function () {
     activeTheAdjacent(primaryImages , thumbnailContainers , gameDescriptions);
 });
 
+setInterval(() => activeTheAdjacent(primaryImages , thumbnailContainers , gameDescriptions) , "10000");
+
+
 // Function to check images with active class, remove the class and set as active the one behind or after
 function activeTheAdjacent(largeImages , smallImageContainers , gameDescriptionsContainers , isOrderFromFirstToLast = true) {
     let index = largeImages.findIndex(largeImage => (largeImage.className.includes('active')));
