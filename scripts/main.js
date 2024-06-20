@@ -30,6 +30,7 @@ const btns = document.getElementsByTagName('button');
 games.forEach((game , i) => {
     const image = document.createElement('img');
     image.src = game.image;
+    image.alt = game.title;
 
     primaryImageContainer.append(image);
     thumbnailContainers[i].append(image.cloneNode(true));
