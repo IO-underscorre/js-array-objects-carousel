@@ -22,49 +22,23 @@ const games = [
     } 
 ];
 
-const primaryImageContainer = document.getElementById('changing-image') , thumbnailContainers = document.getElementsByClassName('thumbnail');
+const primaryImageContainer = document.getElementById('changing-image');
+const thumbnailContainers = document.getElementsByClassName('thumbnail');
+const btns = document.getElementsByTagName('button');
 
 // Insert images in the page
-for (let i = 0 ; i < imagePaths.length ; i++) {
-    const imageContainers = [primaryImageContainer , thumbnailContainers[i]];
+games.forEach((game , i) => {
+    const image = document.createElement('img');
+    image.src = game.image;
 
-    for (let j = 0 ; j < 2 ; j++) {
-        const image = document.createElement('images');
-        image.src = imagePaths[i];
-        imageContainers[j].append(image);
-        
-        // Add active class to the first images of the page
-        i === 0 ? j === 0 ? image.classList.add("active") : imageContainers[j].classList.add("active") : null;
-    }
-}
+    primaryImageContainer.append(image);
+    thumbnailContainers[i].append(image.cloneNode(true));
+});
 
-const primaryImages = document.querySelectorAll('#changing-image > images');
+const primaryImages = Array.from(document.querySelectorAll('#changing-image > img'));
 
-// Function to check images with active class, remove the class and set as active the one behind or after
-function activeTheAdjacent(largeImages , smallImageContainers , isOrderFromFirstToLast = true) {
-    for(let i = 0 , found = false ; !found ; i++) {
-        if(largeImages[i].className.includes('active')) {
-            found = true;
-            
-            largeImages[i].classList.remove('active');
-            smallImageContainers[i].classList.remove('active');
-            
-            let index;
-
-            if (isOrderFromFirstToLast) {
-                index = i + 1 < largeImages.length ? i + 1 : 0;
-            } else {
-                index = i - 1 >= 0 ? i - 1 : largeImages.length - 1;
-            }
-            
-            largeImages[index].classList.add('active');
-            smallImageContainers[index].classList.add('active');
-        }
-    }
-}
-
-
-const btns = document.getElementsByTagName('button');
+primaryImages[0].classList.add('active');
+thumbnailContainers[0].classList.add('active');
 
 // Calling the function on click on arrow, for previous arrow passing false as argument to revert the logic of the function and obtaining the previous item instead of the next one
 btns[0].addEventListener('click' , function () {
@@ -73,3 +47,22 @@ btns[0].addEventListener('click' , function () {
 btns[1].addEventListener('click' , function () {
     activeTheAdjacent(primaryImages , thumbnailContainers);
 });
+
+console.log(primaryImages.length);
+
+// Function to check images with active class, remove the class and set as active the one behind or after
+function activeTheAdjacent(largeImages , smallImageContainers , isOrderFromFirstToLast = true) {
+    let index = largeImages.findIndex(largeImage => (largeImage.className.includes('active')));
+    
+    largeImages[index].classList.remove('active');
+    smallImageContainers[index].classList.remove('active');
+
+    if (isOrderFromFirstToLast) {
+        index = index + 1 < largeImages.length ? ++index : 0;
+    } else {
+        index = index - 1 >= 0 ? --index : largeImages.length - 1;
+    }
+    
+    largeImages[index].classList.add('active');
+    smallImageContainers[index].classList.add('active');
+}
