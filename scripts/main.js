@@ -32,31 +32,36 @@ games.forEach((game , i) => {
     image.src = game.image;
     image.alt = game.title;
 
+    const textAndDescription = document.createElement('div');
+    textAndDescription.innerHTML = `<h2>${game.title}</h2><p>${game.text}</p>`;
+
     primaryImageContainer.append(image);
+    primaryImageContainer.append(textAndDescription);
     thumbnailContainers[i].append(image.cloneNode(true));
 });
 
 const primaryImages = Array.from(document.querySelectorAll('#changing-image > img'));
+const gameDescriptions = document.querySelectorAll('#changing-image > div');
 
 primaryImages[0].classList.add('active');
 thumbnailContainers[0].classList.add('active');
+gameDescriptions[0].classList.add('active');
 
 // Calling the function on click on arrow, for previous arrow passing false as argument to revert the logic of the function and obtaining the previous item instead of the next one
 btns[0].addEventListener('click' , function () {
-    activeTheAdjacent(primaryImages , thumbnailContainers , false);
+    activeTheAdjacent(primaryImages , thumbnailContainers , gameDescriptions , false);
 });
 btns[1].addEventListener('click' , function () {
-    activeTheAdjacent(primaryImages , thumbnailContainers);
+    activeTheAdjacent(primaryImages , thumbnailContainers , gameDescriptions);
 });
 
-console.log(primaryImages.length);
-
 // Function to check images with active class, remove the class and set as active the one behind or after
-function activeTheAdjacent(largeImages , smallImageContainers , isOrderFromFirstToLast = true) {
+function activeTheAdjacent(largeImages , smallImageContainers , gameDescriptionsContainers , isOrderFromFirstToLast = true) {
     let index = largeImages.findIndex(largeImage => (largeImage.className.includes('active')));
     
     largeImages[index].classList.remove('active');
     smallImageContainers[index].classList.remove('active');
+    gameDescriptionsContainers[index].classList.remove('active');
 
     if (isOrderFromFirstToLast) {
         index = index + 1 < largeImages.length ? ++index : 0;
@@ -66,4 +71,5 @@ function activeTheAdjacent(largeImages , smallImageContainers , isOrderFromFirst
     
     largeImages[index].classList.add('active');
     smallImageContainers[index].classList.add('active');
+    gameDescriptionsContainers[index].classList.add('active');
 }
