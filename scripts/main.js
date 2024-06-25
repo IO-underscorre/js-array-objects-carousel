@@ -49,7 +49,7 @@ thumbnailContainers[0].classList.add('active');
 gameDescriptions[0].classList.add('active');
 
 // Auto-scroll call
-const timer = autoScroll(primaryImages , thumbnailContainers , gameDescriptions);
+let timer = autoScroll(primaryImages , thumbnailContainers , gameDescriptions);
 
 // Restart auto-scrolling
 btns[1].addEventListener('click' , function () {
